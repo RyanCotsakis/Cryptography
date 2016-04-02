@@ -3,8 +3,10 @@
 import sys
 import codecs
 import os
+import tkFileDialog
+import Tkinter
 
-CLEAR_COMMAND = "clear"
+CLEAR_COMMAND = "cls"
 
 def encoder(text,pwNum):
 	binStr = ""
@@ -23,7 +25,12 @@ def encoder(text,pwNum):
 		newtext += chr(newNum)
 	return newtext
 
-f = codecs.open(sys.argv[1], encoding = "utf-8", mode = "r+")
+print "Select a file.\n"
+sys.stdout.flush()
+root = Tkinter.Tk()
+root.withdraw()
+fname = tkFileDialog.askopenfilename(filetypes = (("Text Document","*.txt"),("All Files","*.*")))
+f = codecs.open(fname, encoding = "utf-8", mode = "r+")
 
 print "Enter password:"
 sys.stdout.flush()
@@ -36,6 +43,16 @@ for char in pw:
 
 originalData = f.read()
 newData = encoder(originalData,pwNum)
+
+print "COMMAND LIST:"
+print "view\t\t-translate text"
+print "current\t\t-view current text"
+print "write\t\t-write translated text to file"
+print "find\t\t-search for query in translated text"
+print "add\t\t-append line of text to translated text"
+print "password\t-print password"
+print "hide\t\t-clear the output screen"
+print "exit\t\t-close program"
 
 while True:
 	print "\nEnter command:"
