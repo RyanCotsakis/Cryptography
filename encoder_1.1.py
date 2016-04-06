@@ -24,10 +24,14 @@ def encoder(text,pwNum):
 	oldtext = ""
 	for x in range(len(text)):
 		charNum = ord(text[x])
-		if charNum < 128:
-			newNum = charNum ^ key[x]
-			newtext += chr(newNum)
+		if charNum >= 128:
+			charNum = ord("?")
+			oldtext += "?"
+		else:
 			oldtext += text[x]
+		newNum = charNum ^ key[x]
+		newtext += chr(newNum)
+
 	return oldtext, newtext
 
 def write_to_file(file,text):
