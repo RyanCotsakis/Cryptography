@@ -37,7 +37,7 @@ def encoder(text,pwNum):
 
 def write_to_file(file,text):
 	file.seek(0)
-	file.write(str(text))
+	file.write(text)
 	file.truncate()
 
 print "Select a file.\n"
@@ -103,7 +103,7 @@ while True:
 		sys.stdout.flush()
 		newLine = raw_input()
 		newData += "\n" + newLine
-		originalData = encoder(newData, pwNum)
+		garbage, originalData = encoder(newData, pwNum)
 		write_to_file(f,originalData)
 
 	elif command == "view":
