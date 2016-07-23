@@ -2,7 +2,7 @@ from distutils.core import setup
 import py2exe
 
 setup(
-    console=['encoder_1.1.py'],
+    console=['enigma.py'],
     options={ 
                 'py2exe': 
                 { 
