@@ -5,6 +5,7 @@ import codecs
 import os
 import tkFileDialog
 import Tkinter
+import getpass
 from docx import Document
 
 CLEAR_COMMAND = "cls"
@@ -36,7 +37,7 @@ def encoder(text,pwNum):
 
 def write_to_file(file,text):
 	file.seek(0)
-	file.write(text)
+	file.write(str(text))
 	file.truncate()
 
 print "Select a file.\n"
@@ -57,10 +58,8 @@ else:
 	f = codecs.open(fname, encoding = "utf-8", mode = "r+")
 	originalData = f.read()
 
-print "Enter password:"
-sys.stdout.flush()
-pw = raw_input()
-os.system(CLEAR_COMMAND)
+pw = getpass.getpass()
+
 pwNum = 0
 for char in pw:
 	pwNum *= 96
@@ -68,17 +67,17 @@ for char in pw:
 
 originalData, newData = encoder(originalData,pwNum)
 
-print "COMMAND LIST:"
+print "\nCOMMAND LIST:"
 print "view\t\t-translate text"
 print "current\t\t-view current text"
 print "write\t\t-write translated text to file"
 print "find\t\t-search for query in translated text"
 print "add\t\t-append line of text to translated text"
 print "password\t-print password"
-print "hide\t\t-clear the output screen"
+print "clear\t\t-clear the output screen"
 print "exit\t\t-close program"
 
-while True:
+while True: 
 	print "\nEnter command:"
 	sys.stdout.flush()
 	command = raw_input().strip()
@@ -113,7 +112,7 @@ while True:
 	elif command == "current":
 		print originalData
 
-	elif command == "hide":
+	elif command == "clear":
 		os.system(CLEAR_COMMAND)
 
 	elif command == "password":
