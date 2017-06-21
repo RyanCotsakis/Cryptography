@@ -1,7 +1,7 @@
 """ enigma - Ryan Cotsakis """
 
 import sys
-#import codecs
+import codecs
 import os
 import tkFileDialog
 import Tkinter
@@ -50,6 +50,8 @@ def main():
 		print "Select a directory for the new file.\n"
 		sys.stdout.flush()
 		directory = tkFileDialog.askdirectory()
+		if directory == '':
+			return
 		version = 0
 		while True:
 			try:
@@ -59,11 +61,11 @@ def main():
 			f.close()
 			version += 1
 		f = open(directory + "/enigma_" + str(version) + ".txt", mode = "w")
-		f.write("This file was created by enigma.\nEnter your content here.")
+		f.write("This file was automatically created by enigma.\nReplace this text with your information.")
 		f.close()
 		return
 	else:
-		f = open(fname, mode = "r+")
+		f = codecs.open(fname, encoding = "utf-8", mode = "r+")
 		originalData = f.read()
 
 	pw = getpass.getpass()
@@ -88,6 +90,7 @@ def main():
 	while True: 
 		print "\nEnter command:"
 		sys.stdout.flush()
+		
 		command = raw_input().strip()
 
 		if command in "write" and command[0] == "w":
@@ -134,8 +137,6 @@ def main():
 
 		else:
 			print "Invalid command, " + command
-
-		time.sleep(0.02)
 
 	try:
 		f.close()
