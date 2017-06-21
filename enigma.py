@@ -78,9 +78,9 @@ def main():
 	originalData, newData = encoder(originalData,pwNum)
 
 	print "\nCOMMAND LIST:"
-	print "view\t\t-translate text"
+	print "write\t\t-translate text and overwrite the file"
+	print "view\t\t-translate text and print it to the screen"
 	print "current\t\t-view current text"
-	print "write\t\t-write translated text to file"
 	print "find\t\t-search for query in translated text"
 	print "add\t\t-append line of text to translated text"
 	print "password\t-print password"
@@ -96,7 +96,7 @@ def main():
 		if command in "write" and command[0] == "w":
 			write_to_file(f,newData)
 			newData, originalData = originalData, newData
-			print "Write to file successful. Type 'current' to view the new contents."
+			print "Write successful."
 
 		elif command in "exit" and command[0] == "e":
 			break
