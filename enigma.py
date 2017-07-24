@@ -68,14 +68,21 @@ def main():
 		f = codecs.open(fname, encoding = "utf-8", mode = "r+")
 		originalData = f.read()
 
-	pw = getpass.getpass()
+		pw = getpass.getpass()
 
-	pwNum = 0
-	for char in pw:
-		pwNum *= 96
-		pwNum += ord(char)%96
+		pwNum = 0
+		for char in pw:
+			pwNum *= 96
+			pwNum += ord(char)%96
 
-	originalData, newData = encoder(originalData,pwNum)
+		originalData, newData = encoder(originalData,pwNum)
+
+		if not (pw in originalData or pw in newData):
+			print "WARNING: The password entered could not be found in the document"
+			sys.stdout.flush()
+			time.sleep(2)
+
+
 
 	print "\nCOMMAND LIST:"
 	print "write\t\t-translate text and overwrite the file"
