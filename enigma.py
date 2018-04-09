@@ -1,6 +1,5 @@
 ''' enigma - Ryan Cotsakis '''
 
-import sys
 import codecs
 import os
 import getpass
@@ -83,7 +82,7 @@ def main():
     original_data, new_data = encoder(original_data, pw_num)
 
     if not (pw in original_data or pw in new_data):
-        print 'WARNING: The password entered could not be found in the document'
+        print 'WARNING: the password entered could not be found in the document'
         time.sleep(2)
 
     help()
@@ -132,7 +131,7 @@ def main():
             time.sleep(2)
             os.system(CLEAR_COMMAND)
 
-        else:
+        elif not command == '':
             print command + ': command not found'
 
     try:
