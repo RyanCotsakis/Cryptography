@@ -83,7 +83,8 @@ def main():
 
     if not (pw in original_data or pw in new_data):
         print 'WARNING: the password entered could not be found in the document'
-        time.sleep(2)
+        raw_input('Press <Enter> to continue')
+        f_name += '!'
 
     help()
 
@@ -128,7 +129,7 @@ def main():
 
         elif command == 'password':
             print pw
-            time.sleep(2)
+            raw_input('Press <Enter> to continue')
             os.system(CLEAR_COMMAND)
 
         elif not command == '':
