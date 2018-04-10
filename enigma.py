@@ -1,9 +1,16 @@
-''' enigma - Ryan Cotsakis '''
+# enigma - Ryan Cotsakis
+
+# In ~/.bashrc append:
+# alias enigma='function _enigma(){ python ~/Python/enigma/enigma.py $1; };_enigma'
+#
+# Then in terminal run:
+# . ~/.bashrc
+# enigma filename
 
 import codecs
 import os
 import getpass
-import time
+import sys
 
 CLEAR_COMMAND = 'clear'
 
@@ -52,8 +59,9 @@ def help():
     print 'q\t\t-close the program\n'
 
 
-def main():
-    f_name = raw_input('Filename: ')
+def main(f_name=None):
+    if f_name is None:
+        f_name = raw_input('Filename: ')
 
     if f_name == '':
         return
@@ -89,7 +97,7 @@ def main():
     help()
 
     while True:
-        command = raw_input('enigma:' + f_name + '$').strip()
+        command = raw_input('enigma:' + f_name + '$ ').strip()
 
         if command == 'write':
             write_to_file(f, new_data)
@@ -142,4 +150,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        main()
