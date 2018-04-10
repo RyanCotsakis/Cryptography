@@ -56,7 +56,7 @@ def help():
     print 'add\t\t-append line of text to translated text'
     print 'password\t-print password'
     print 'clear\t\t-clear the output screen'
-    print 'q\t\t-close the program\n'
+    print 'q(uit)\t\t-close the program\n'
 
 
 def main(f_name=None):
@@ -104,7 +104,7 @@ def main(f_name=None):
             new_data, original_data = original_data, new_data
             print 'write successful'
 
-        elif command == 'q':
+        elif command == 'q' or command == 'quit':
             break
 
         elif command[:4] == 'find':
@@ -151,6 +151,12 @@ def main(f_name=None):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        main(sys.argv[1])
+        if sys.argv[1] == '--help':
+            print 'enigma encrypts and decrypts sensitive documents\n'
+            print 'Usage:'
+            print 'enigma [filename]'
+            help()
+        else:
+            main(sys.argv[1])
     else:
         main()
