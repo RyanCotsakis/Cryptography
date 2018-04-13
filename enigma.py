@@ -12,6 +12,7 @@ import os
 import getpass
 import sys
 
+VERSION = '1.0.0'
 CLEAR_COMMAND = 'clear'
 
 
@@ -49,14 +50,14 @@ def write_to_file(f, text):
 
 def help():
     print '\nCOMMAND LIST:'
-    print 'write\t\t-translate text and overwrite the file'
+    print 'add []\t\t-append line of text to translated text'
     print 'cat\t\t-view current text'
-    print 'help\t\t-view this information'
-    print 'find\t\t-search for query in translated text'
-    print 'add\t\t-append line of text to translated text'
-    print 'password\t-print password'
     print 'clear\t\t-clear the output screen'
-    print 'q(uit)\t\t-close the program\n'
+    print 'find []\t\t-search for query in translated text'
+    print 'help\t\t-view this information'
+    print 'password\t-print password'
+    print 'q(uit)\t\t-close the program'
+    print 'write\t\t-translate text and overwrite the file\n'
 
 
 def main(f_name=None):
@@ -151,12 +152,15 @@ def main(f_name=None):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if sys.argv[1] == '--help':
+        arg = sys.argv[1]
+        if arg == '--help':
             print 'enigma encrypts and decrypts sensitive documents\n'
             print 'Usage:'
             print 'enigma [filename]'
             help()
+        elif arg == '--version':
+            print 'enigma ' + VERSION
         else:
-            main(sys.argv[1])
+            main(arg)
     else:
         main()
