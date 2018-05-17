@@ -1,12 +1,5 @@
 # enigma - Ryan Cotsakis
 
-# In ~/.bashrc append:
-# alias enigma='function _enigma(){ python ~/Python/enigma/enigma.py $1; };_enigma'
-#
-# Then in terminal run:
-# . ~/.bashrc
-# enigma filename
-
 import codecs
 import os
 import getpass
