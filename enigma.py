@@ -5,7 +5,7 @@ import os
 import getpass
 import sys
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 CLEAR_COMMAND = 'clear'
 
 
@@ -99,6 +99,7 @@ def main(f_name=None):
             print 'write successful'
 
         elif command == 'q' or command == 'quit':
+            os.system(CLEAR_COMMAND)
             break
 
         elif command[:4] == 'find':

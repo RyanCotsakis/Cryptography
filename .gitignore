@@ -1,2 +1,5 @@
 # Pycharm #
 .idea/
+
+# Text Documents #
+*.txt
